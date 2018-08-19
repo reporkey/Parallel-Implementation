@@ -1,1 +1,2 @@
-=====COMP90025 Parallel and Multicore Computation=====
+============================================
+COMP90025 Parallel and Multicore Computation
