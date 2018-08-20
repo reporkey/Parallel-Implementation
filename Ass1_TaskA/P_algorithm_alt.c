@@ -45,11 +45,11 @@ int main(int argc, char** argv){
 	timeRead = omp_get_wtime();
 
     //Floyd-Warshall
-	#pragma omp parallel for collapse(2) shared(distance)
+	#pragma omp parallel for collapse(3) shared(distance)
     for (int k=1;k<=nodesCount;++k){
         for (int i=1;i<=nodesCount;++i){
-            if (distance[i][k]!=NOT_CONNECTED){
-                for (int j=1;j<=nodesCount;++j){
+            for (int j=1;j<=nodesCount;++j){
+            	if (distance[i][k]!=NOT_CONNECTED){
                     if (distance[k][j]!=NOT_CONNECTED && (distance[i][j]==NOT_CONNECTED || distance[i][k]+distance[k][j]<distance[i][j])){
 						#pragma omp critical(calc)
 						{
@@ -68,10 +68,12 @@ int main(int argc, char** argv){
 	#pragma omp parallel for collapse(2) shared(diameter)
     for (int i=1;i<=nodesCount;++i){
         for (int j=1;j<=nodesCount;++j){
-            #pragma omp critical(search)
-			{
-            	diameter=distance[i][j];
-			}
+            if (diameter<distance[i][j]){
+				#pragma omp critical(search)
+				{
+                	diameter=distance[i][j];
+				}
+            }
         }
     }
 	timeCompare = omp_get_wtime();
