@@ -1,74 +1,73 @@
-gcc -Wall -fopenmp -o P_algorithm P_algorithm.c
-gcc -Wall -fopenmp -o P_algorithm_alt P_algorithm_alt.c
+make: Nothing to be done for 'all'.
 Run time: 1 with input_1k by P_algorithm
-Diameter = 110
-Calculating: 	2.669342
-Comparing: 	0.037977
-Total: 		2.888976
+Diameter = 290
+Calculating: 	2.840236
+Comparing: 	0.000796
+Total: 		3.175912
 
 Run time: 2 with input_1k by P_algorithm
-Diameter = 110
-Calculating: 	2.699321
-Comparing: 	0.054147
-Total: 		2.906604
+Diameter = 290
+Calculating: 	2.941084
+Comparing: 	0.000782
+Total: 		3.266765
 
 Run time: 1 with input_1k by P_algorithm_alt
 Diameter = 290
-Calculating: 	2.579526
-Comparing: 	0.000769
-Total: 		2.706750
+Calculating: 	10.206048
+Comparing: 	0.000830
+Total: 		10.507474
 
 Run time: 2 with input_1k by P_algorithm_alt
 Diameter = 290
-Calculating: 	2.799212
-Comparing: 	0.010518
-Total: 		2.910090
+Calculating: 	9.108186
+Comparing: 	0.000824
+Total: 		9.411950
 
 Run time: 1 with input_1k by S_algorithm
 Diameter = 290
-Calculating: 	4.086026
-Comparing: 	0.002261
-Total: 		4.391518
+Calculating: 	3.829655
+Comparing: 	0.002249
+Total: 		4.127912
 
 Run time: 2 with input_1k by S_algorithm
 Diameter = 290
-Calculating: 	4.042632
-Comparing: 	0.002283
-Total: 		4.339928
+Calculating: 	3.820555
+Comparing: 	0.002218
+Total: 		4.121011
 
 Run time: 1 with input_2k by P_algorithm
-Diameter = 0
-Calculating: 	16.994286
-Comparing: 	0.185229
-Total: 		17.283405
+Diameter = 667
+Calculating: 	13.948632
+Comparing: 	0.003063
+Total: 		14.253523
 
 Run time: 2 with input_2k by P_algorithm
-Diameter = 170
-Calculating: 	16.582177
-Comparing: 	0.188366
-Total: 		16.878084
+Diameter = 667
+Calculating: 	14.853096
+Comparing: 	0.003437
+Total: 		15.156194
 
 Run time: 1 with input_2k by P_algorithm_alt
-Diameter = 1376
-Calculating: 	5.998185
-Comparing: 	0.003873
-Total: 		6.190023
+Diameter = 1409
+Calculating: 	24.402316
+Comparing: 	0.003085
+Total: 		24.733942
 
 Run time: 2 with input_2k by P_algorithm_alt
-Diameter = 1376
-Calculating: 	6.190273
-Comparing: 	0.003390
-Total: 		6.324019
+Diameter = 1482
+Calculating: 	24.965111
+Comparing: 	0.003148
+Total: 		25.268222
 
 Run time: 1 with input_2k by S_algorithm
 Diameter = 667
-Calculating: 	28.495942
-Comparing: 	0.008903
-Total: 		28.827058
+Calculating: 	25.770956
+Comparing: 	0.008900
+Total: 		26.078090
 
 Run time: 2 with input_2k by S_algorithm
 Diameter = 667
-Calculating: 	27.057606
-Comparing: 	0.009823
-Total: 		27.388404
+Calculating: 	26.288033
+Comparing: 	0.010078
+Total: 		26.594236
 

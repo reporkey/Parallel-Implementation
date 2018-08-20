@@ -52,9 +52,7 @@ int main(int argc, char** argv){
                 for (int j=1;j<=nodesCount;++j){
                     if (distance[k][j]!=NOT_CONNECTED && (distance[i][j]==NOT_CONNECTED || distance[i][k]+distance[k][j]<distance[i][j])){
 						#pragma omp critical(calc)
-						{
-                        	distance[i][j]=distance[i][k]+distance[k][j];
-						}
+                       	distance[i][j]=distance[i][k]+distance[k][j];
 						#pragma omp flush(distance)
                     }
                 }
@@ -68,9 +66,10 @@ int main(int argc, char** argv){
 	#pragma omp parallel for collapse(2) shared(diameter)
     for (int i=1;i<=nodesCount;++i){
         for (int j=1;j<=nodesCount;++j){
-            #pragma omp critical(search)
-			{
-            	diameter=distance[i][j];
+			if (diameter<distance[i][j]){
+		        #pragma omp critical(search)
+		      	diameter=distance[i][j];
+				#pragma omp flush(diameter)
 			}
         }
     }

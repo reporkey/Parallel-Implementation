@@ -5,7 +5,7 @@ make
 
 for input in "input_1k" "input_2k"
 do
-	for program in "P_algorithm" "P_algorithm_alt" "S_algorithm"
+	for program in "P_algorithm" "S_algorithm"
 	do
 		for ((i=1; i<=$number_of_run; i++))
 		do
