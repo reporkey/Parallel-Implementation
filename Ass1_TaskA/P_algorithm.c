@@ -1,11 +1,11 @@
 #include <stdio.h>
+#include <string.h>
 #include <omp.h>
 
 #define MAX 10000
 #define NOT_CONNECTED -1
 
 int distance[MAX][MAX];
-
 int nodesCount, edgesCount;
 
 void Initialize(){
@@ -48,14 +48,14 @@ int main(int argc, char** argv){
 	#pragma omp parallel for collapse(2) shared(distance)
     for (int k=1;k<=nodesCount;++k){
         for (int i=1;i<=nodesCount;++i){
-            if (distance[i][k]!=NOT_CONNECTED){
+   //         if (distance[i][k]!=NOT_CONNECTED){
                 for (int j=1;j<=nodesCount;++j){
-                    if (distance[k][j]!=NOT_CONNECTED && (distance[i][j]==NOT_CONNECTED || distance[i][k]+distance[k][j]<distance[i][j])){
-						#pragma omp critical(calc)
+                    if (distance[i][k]!=NOT_CONNECTED && distance[k][j]!=NOT_CONNECTED && (distance[i][j]==NOT_CONNECTED || distance[i][j]>distance[i][k]+distance[k][j])){
+	//					#pragma omp critical(calc)
                        	distance[i][j]=distance[i][k]+distance[k][j];
-						#pragma omp flush(distance)
+	//					#pragma omp flush(distance)
                     }
-                }
+    //            }
             }
         }
     }
