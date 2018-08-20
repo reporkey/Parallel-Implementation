@@ -22,7 +22,7 @@ void Initialize(){
 
 
 int main(int argc, char** argv){
-    double timeBegin, timeInitial, timeRead, timeCalculate, timeCompare, timeEnd;
+    double timeBegin, timeRead, timeCalculate, timeCompare, timeEnd;
 	timeBegin = omp_get_wtime();
 
     if(argc!=2){
@@ -36,7 +36,6 @@ int main(int argc, char** argv){
     }
 
     Initialize();
-	timeInitial = omp_get_wtime();
 
 	int a, b, c;
     fscanf(in_file,"%d %d", &nodesCount, &edgesCount);
@@ -77,8 +76,6 @@ int main(int argc, char** argv){
 
     printf("Diameter = %d\n", diameter);
 	timeEnd = omp_get_wtime();
-	printf("Initialing: \t%f\n", timeInitial-timeBegin);
-	printf("Reading: \t%f\n", timeRead-timeInitial);
 	printf("Calculating: \t%f\n", timeCalculate-timeRead);
 	printf("Comparing: \t%f\n", timeCompare-timeCalculate);
 	printf("Total: \t\t%f\n", timeEnd-timeBegin);
