@@ -6,25 +6,9 @@
 
 int distance[MAX][MAX];
 
-int nodesCount;
+int nodesCount, edgesCount;
 
-// Fixed length Initailization
-void FixedLengthInitialize(){
-	#pragma omp parallel for
-    for (int i=0;i<MAX;++i){
-        for (int j=0;j<MAX;++j){
-            distance[i][j]=NOT_CONNECTED;
-        }
-        distance[i][i]=0;
-    }
-}
-
-// NodeCount based Initailization
-void NodeCountBasedInitialize(){
-	int fac =1;
-	#pragma omp parallel for reduction(*:fac)
-	for(int n=2; n<=nodesCount;++n) fac *= n;
-
+void Initialize(){
 	#pragma omp parallel for
     for (int i=0;i<MAX;++i){
         for (int j=0;j<MAX;++j){
@@ -35,7 +19,7 @@ void NodeCountBasedInitialize(){
 }
 
 int main(int argc, char** argv){
-    double timeBegin, timeInitial, timeRead, timeCalculate, timeCompare, timeEnd;
+    double timeBegin, timeRead, timeCalculate, timeCompare, timeEnd;
 	timeBegin = omp_get_wtime();
 
     if(argc!=2){
@@ -47,15 +31,11 @@ int main(int argc, char** argv){
         printf("Can't open file for reading.\n");
         return -1;
     }
-	fscanf(in_file,"%d", &nodesCount);
-
-//    FixedLengthInitialize();
-	NodeCountBasedInitialize();
 	
-	timeInitial = omp_get_wtime();
+	Initialize();
 
 	int a, b, c;
-    
+    fscanf(in_file,"%d %d", &nodesCount, &edgesCount);
     while(fscanf(in_file,"%d %d %d", &a, &b, &c)!= EOF){
         if ( a > nodesCount || b > nodesCount){
             printf("Vertex index out of boundary.");
@@ -66,6 +46,7 @@ int main(int argc, char** argv){
 	timeRead = omp_get_wtime();
 
     //Floyd-Warshall
+	#pragma omp parallel for collapse(2)
     for (int k=1;k<=nodesCount;++k){
         for (int i=1;i<=nodesCount;++i){
             if (distance[i][k]!=NOT_CONNECTED){
@@ -93,8 +74,6 @@ int main(int argc, char** argv){
 
     printf("Diameter = %d\n", diameter);
 	timeEnd = omp_get_wtime();
-	printf("Initialing: \t%f\n", timeInitial-timeBegin);
-	printf("Reading: \t%f\n", timeRead-timeInitial);
 	printf("Calculating: \t%f\n", timeCalculate-timeRead);
 	printf("Comparing: \t%f\n", timeCompare-timeCalculate);
 	printf("Total: \t\t%f\n", timeEnd-timeBegin);

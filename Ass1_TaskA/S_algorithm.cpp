@@ -8,7 +8,7 @@ using namespace std;
 
 int distance[MAX][MAX];
 
-int nodesCount;
+int nodesCount, edgesCount;
 
 void Initialize(){
     for (int i=0;i<MAX;++i){
@@ -39,7 +39,7 @@ int main(int argc, char** argv){
 	timeInitial = omp_get_wtime();
 
 	int a, b, c;
-    fscanf(in_file,"%d", &nodesCount);
+    fscanf(in_file,"%d %d", &nodesCount, &edgesCount);
     while(fscanf(in_file,"%d %d %d", &a, &b, &c)!= EOF){
         if ( a > nodesCount || b > nodesCount){
             printf("Vertex index out of boundary.");

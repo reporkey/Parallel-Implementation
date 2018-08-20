@@ -1,0 +1,4 @@
+
+gcc -Wall -o -fopenmp S_algorithm S_algorithm.cpgcc -o omp_helloc -fopenmp omp_hello.cp
+
+gcc -Wall -o -fopenmp P_algorithm P_algorithm.c
