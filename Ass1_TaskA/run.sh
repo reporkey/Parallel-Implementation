@@ -1,8 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 
-flag="-Wall -fopenmp -o"
-inputFile="input1"
+number_of_run=2;
+make
 
-gcc $flag P_algorithm P_algorithm.c
-
-./P_algorithm
+for input in "input_sample" "input_50" "input_100" "input_500" "input_1k" "input_2k" "input_5k" "input_10k"
+do
+	echo $input
+	echo ""
+	for ((i=1; i<=$number_of_run; i++))
+	do
+		echo "Run time: $i"
+		
+		./P_algorithm $input;
+		echo ""		
+	done
+done
