@@ -47,15 +47,12 @@ int main(int argc, char** argv){
         distance[a][b]=c;
     }
 	timeRead = omp_get_wtime();
-
     //Floyd-Warshall
     for (int k=1;k<=nodesCount;++k){
         for (int i=1;i<=nodesCount;++i){
-            if (distance[i][k]!=NOT_CONNECTED){
-                for (int j=1;j<=nodesCount;++j){
-                    if (distance[k][j]!=NOT_CONNECTED && (distance[i][j]==NOT_CONNECTED || distance[i][k]+distance[k][j]<distance[i][j])){
-                        distance[i][j]=distance[i][k]+distance[k][j];
-                    }
+            for (int j=1;j<=nodesCount;++j){
+                if (distance[i][k]!=NOT_CONNECTED && distance[k][j]!=NOT_CONNECTED && (distance[i][j]==NOT_CONNECTED || distance[i][k]+distance[k][j]<distance[i][j])){
+                    distance[i][j]=distance[i][k]+distance[k][j];
                 }
             }
         }
@@ -77,8 +74,8 @@ int main(int argc, char** argv){
     printf("Diameter = %d\n", diameter);
 	timeEnd = omp_get_wtime();
 	printf("Calculating: \t%f\n", timeCalculate-timeRead);
-	printf("Comparing: \t%f\n", timeCompare-timeCalculate);
-	printf("Total: \t\t%f\n", timeEnd-timeBegin);
+//	printf("Comparing: \t%f\n", timeCompare-timeCalculate);
+//	printf("Total: \t\t%f\n", timeEnd-timeBegin);
 	
     return 0;
 

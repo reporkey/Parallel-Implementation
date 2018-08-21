@@ -48,14 +48,16 @@ int main(int argc, char** argv){
 	#pragma omp parallel for collapse(2) shared(distance)
     for (int k=1;k<=nodesCount;++k){
         for (int i=1;i<=nodesCount;++i){
-   //         if (distance[i][k]!=NOT_CONNECTED){
+			#pragma omp flush(distance)
+            if (distance[i][k]!=NOT_CONNECTED){
                 for (int j=1;j<=nodesCount;++j){
+					#pragma omp flush(distance)
                     if (distance[i][k]!=NOT_CONNECTED && distance[k][j]!=NOT_CONNECTED && (distance[i][j]==NOT_CONNECTED || distance[i][j]>distance[i][k]+distance[k][j])){
 	//					#pragma omp critical(calc)
                        	distance[i][j]=distance[i][k]+distance[k][j];
 	//					#pragma omp flush(distance)
                     }
-    //            }
+                }
             }
         }
     }
@@ -63,13 +65,13 @@ int main(int argc, char** argv){
 	timeCalculate = omp_get_wtime();
 
     //look for the most distant pair
-	#pragma omp parallel for collapse(2) shared(diameter)
+//	#pragma omp parallel for collapse(2) shared(diameter)
     for (int i=1;i<=nodesCount;++i){
         for (int j=1;j<=nodesCount;++j){
 			if (diameter<distance[i][j]){
-		        #pragma omp critical(search)
+//		        #pragma omp critical(search)
 		      	diameter=distance[i][j];
-				#pragma omp flush(diameter)
+//				#pragma omp flush(diameter)
 			}
         }
     }
@@ -78,8 +80,8 @@ int main(int argc, char** argv){
     printf("Diameter = %d\n", diameter);
 	timeEnd = omp_get_wtime();
 	printf("Calculating: \t%f\n", timeCalculate-timeRead);
-	printf("Comparing: \t%f\n", timeCompare-timeCalculate);
-	printf("Total: \t\t%f\n", timeEnd-timeBegin);
+//	printf("Comparing: \t%f\n", timeCompare-timeCalculate);
+//	printf("Total: \t\t%f\n", timeEnd-timeBegin);
 	
     return 0;
 
