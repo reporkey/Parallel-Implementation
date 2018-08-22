@@ -1,13 +1,19 @@
-all: P_algorithm P_algorithm_new S_algorithm nodegen
+all: P_FW P_FWT S_FW S_FWT nodegen
 
-P_algorithm: P_algorithm.c
-	gcc -Wall -fopenmp -std=c99 -o P_algorithm P_algorithm.c
+P_FW: P_FW.c
+	gcc -Wall -fopenmp -std=c99 -O3 -o P_FW P_FW.c
 
-P_algorithm_new: P_algorithm_new.c
-	gcc -Wall -fopenmp -std=c99 -o P_algorithm_new P_algorithm_new.c
+P_FWT: P_FWT.c
+	gcc -Wall -fopenmp -std=c99 -O3 -o P_FWT P_FWT.c
 
-S_algorithm: S_algorithm.cpp
-	g++ -Wall -fopenmp -o S_algorithm S_algorithm.cpp
+S_FWT: S_FWT.c
+	gcc -Wall -fopenmp -std=c99 -O3 -o S_FWT S_FWT.c
+
+S_FW: S_FW.cpp
+	g++ -Wall -fopenmp -O3 -o S_FW S_FW.cpp
 
 nodegen: nodegen.cpp
-	g++ -Wall -o nodegen nodegen.cpp
+	g++ -Wall -O3 -o nodegen nodegen.cpp
+
+clean:
+	rm P_FW P_FWT S_FW S_FWT nodegen

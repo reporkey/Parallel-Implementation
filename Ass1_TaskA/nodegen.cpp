@@ -1,23 +1,24 @@
 // A C++ Program to generate test cases for
 // a weighted directed graph
 #include<bits/stdc++.h>
+#include <stdlib.h>
 using namespace std;
  
 // Define the number of runs for the test data
 // generated
 #define RUN 1
- 
-// Define the maximum number of vertices of the graph
-#define MAX_VERTICES 8192
- 
-// Define the maximum number of edges
-#define MAX_EDGES 163840
- 
+
 // Define the maximum weight of edges
 #define MAXWEIGHT 10
  
-int main()
+int main(int argc, char** argv)
 {
+	if(argc!=2){
+        printf("Enter number of vertives.\n");
+        return -1;
+    }
+	int MAX_VERTICES = atoi(argv[1]);
+	int MAX_EDGES = 20 * MAX_VERTICES;
     set<pair<int, int>> container;
     set<pair<int, int>>::iterator it;
  
