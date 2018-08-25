@@ -1,12 +1,12 @@
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 \usepackage{colacl}
 \usepackage{graphicx}
 \usepackage{listings}
 \sloppy
 
 \title{Report for COMP90025 Assignment 1 Task A \\
-  \large Implementation of paralled \\
-  Floyd-Warshall algorithm}
+\large Implementation of parallel \\
+Floyd-Warshall algorithm}
 
 \author{Zichun Zhu \texttt{784145} \and Yijian Zhang \texttt{806676}}
 
@@ -14,53 +14,44 @@
 \maketitle
 
 \section{Introduction}
-The focus of this report is implementing an paralled solution for the all-pairs shortest path problem(APSP). Our aim is to find the diameter, which is the maximum of the shortest path lengths between all pairs of nodes of a graph. 
+The focus of this report is implementing an parallel solution for the all-pairs shortest path problem(APSP). Our aim is to find the diameter, which is the maximum of the shortest path lengths between all pairs of nodes of a graph.
 
-There are some exsited algorithms to solve APSP problem, such as the Dijkastra and the Floyd-Warshall (FW) algorithms\cite{albalawi2013task}. Considering the structures of the algorithms, the squential Floyd-Wallshall's algorithm has explicitly three nested loops as in Listing \ref{lst:Code1}, which is more sutiable to make it parallel. We will focus on the FW algorithm.
+There are some variable algorithms to solve APSP problem, such as the Dijkstra and the Floyd-Warshall (FW) algorithms\cite{albalawi2013task}. Considering the structures of the algorithms, the sequential Floyd-Warshall's algorithm has explicitly three nested loops as in Listing \ref{lst:Code1}, which is more suitable to make it parallel. We will focus on the FW algorithm.
 
 \begin{lstlisting}[label={lst:Code1},caption={Sequantial standard FW algorithm.}, captionpos=b,basicstyle=\small]
 for k = 1 to N
-   for i = 1 to N
-      for j = 1 to N
-         dist[k][i][j] = 
-         min(dist[k-1][i][j], 
-         dist[k-1][i][k]
-         + dist[k-1][k][j])
+ for i = 1 to N
+    for j = 1 to N
+       dist[k][i][j] =
+       min(dist[k-1][i][j],
+       dist[k-1][i][k]
+       + dist[k-1][k][j])
 \end{lstlisting}
 
 \section{FWI and FWT}
-The code in Listing \ref{lst:Code1} is the standard FW algorithm, simply nested in three loops. The outtest variable k is the "via node" that the path goes through from i to j. Because the property, the standard algorithm has a dependence so that k has to be the outtest loop.
+The code in Listing \ref{lst:Code1} is the standard FW algorithm, simply nested in three loops. The outtest variable k is the "via node" that the path goes through from i to j. Because the property, the standard algorithm has a dependence so that k has to be the outest loop.
 
-Sung-Chul had introduced an optimized FW algorithm in 2006\cite{Han:2006:PGA:1152154.1152189}. He devides an entire matrix of nodes(N*N) into smaller tiles(M*M)\footnote{A problem size of N, devided into M smaller problems with a problem size of L.}, called tiled Floyd-Warshall(FWT). Then iterative Floyd-Warshall devided L again into smaller  submatrixes with problem size L. Note that such algorithm does not decrease the time complexity of APSP problems, but it improves the data reusage and breaks the inner dependency of i, j, and k. In more percific there are four phases shown in Figure \ref{fig:phases}. In the phase 4 the three submatrix are not overclapped, which means they are all independent. In this case, i, j, k can swap positions freely. Moreover, after FWT splits the entire matrix into submatrixes, the iteratice FW(FWI) algorithm  can be used. It devides the submatrix again by size of U.
+Sung-Chul had introduced an optimized FW algorithm in 2006\cite{Han:2006:PGA:1152154.1152189}. He divides an entire matrix of nodes(N*N) into smaller tiles(M*M)\footnote{A problem size of N, divided into M smaller problems with a problem size of L.}, called tiled Floyd-Warshall(FWT). Then iterative Floyd-Warshall divided L again into smaller  submatrices with problem size L. Note that such algorithm does not decrease the time complexity of APSP problems, but it improves the data reuse and breaks the inner dependency of i, j, and k. In more pacific there are four phases shown in Figure \ref{fig:phases}. In the phase 4 the three submatrix are not overlapped, which means they are all independent. In this case, i, j, k can swap positions freely. Moreover, after FWT splits the entire matrix into submatrices, the iterative FW(FWI) algorithm  can be used. It divides the submatrix again by size of U.
 \begin{figure}
 \includegraphics[width=3.05in]{FWT_phases}
 	\caption{Four phases in FWT\cite{Han:2006:PGA:1152154.1152189}}
-    \label{fig:phases}
+  \label{fig:phases}
 \end{figure}
 
 
 \section{Result}
 
+\begin{figure}
+	\includegraphics[width=3.05in]{plotL}
+		\caption{With a large problem size, parallel FWT has better performance.}
+		\label{fig:plotL}
+	\includegraphics[width=3.05in]{plotS}
+		\caption{With a small problem size, both parallel algorithms perform worse.}
+		\label{fig:plotS}
+\end{figure}
 
-
-
-\begin{table}[h]
- \begin{center}
-\begin{tabular}{|l|l|}
-
-      \hline
-      Corpus & Features\\
-      \hline\hline
-      AAA & 1M words\\
-      BBB & spoken corpus (expensive)\\
-      CCC & 2M words\\
-        & free (to academics)\\
-      \hline
-
-\end{tabular}
-\caption{The caption of the table}\label{table1}
- \end{center}
-\end{table}
+Figure \ref{fig:plotL} clearly shows that the tiled Floyd-Warshall algorithm spend less time than the standard algorithm when the problem size is large enough. Plus some OpenMP parallel optimization, its performance is better. Since the efficiencies of algorithms are vary, comparing with SFW, the speedup of PFWT could be from negative(when problem size below 350) up to positive 1.69(when problem size equals 2500).
+We found it's interesting that the performance is not evenly. In anothor words the efficiencies is not linear. As the problem size increase, the time consumed increases in exponential. We believe the bandwidth of memory limited the performance.
 
 \bibliographystyle{abbrv}
 \bibliography{bib}

@@ -28,7 +28,6 @@ void FWI(int Ai, int Aj, int Bi, int Bj, int Ci, int Cj){
 			for (int j=1; j+U<=L+1; j+=U){
 
 				// inner loop
-//				#pragma omp parallel for collapse(2)
 				for (int x=i; x<i+U; x++){
 					for (int y=j; y<j+U; y++){
 						if (D[Ai+x][Aj+k]!=NOT_CONNECTED && D[Bi+k][Bj+y]!=NOT_CONNECTED && (D[Ci+x][Cj+y]==NOT_CONNECTED || D[Ci+x][Cj+y]>D[Ai+x][Aj+k]+D[Bi+k][Bj+y])){
@@ -42,13 +41,11 @@ void FWI(int Ai, int Aj, int Bi, int Bj, int Ci, int Cj){
 }
 
 void FWIabc(int Ai, int Aj, int Bi, int Bj, int Ci, int Cj){
-//	#pragma omp parallel for collapse(3)
 	for (int i=1; i<=L-U+1; i+=U){
 		for (int j=1; j<=L-U+1; j+=U){
 			for (int k=1; k<=L-U+1; k+=U){
 				
 				// inner loop		
-	//			#pragma omp parallel for collapse(3)
 				for (int z=k; z<k+U; z++){
 					for (int x=i; x<i+U; x++){
 						for (int y=j; y<j+U; y++){
@@ -125,7 +122,7 @@ int main(int argc, char** argv){
         D[a][b]=c;
     }
 
-	// comtuting begin
+	// computing begin
 	timeRead = omp_get_wtime();
 	nodesCount = 0;
 	while (nodesCount < nodesCount_real){
@@ -139,10 +136,9 @@ int main(int argc, char** argv){
 
     //look for the most distant pair
 	int diameter=-1;
-//	#pragma omp parallel for collapse(2) shared(diameter)
+
     for (int i=1;i<=nodesCount;i++){
         for (int j=1;j<=nodesCount;j++){
-//			#pragma omp flush(diameter)
 			if (diameter<D[i][j]){
 		      	diameter=D[i][j];
 			}
