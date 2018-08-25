@@ -1,0 +1,16 @@
+\begin{thebibliography}{1}
+
+\bibitem{albalawi2013task}
+E.~Albalawi.
+\newblock Task level parallelization of irregular computations using openmp
+  3.0.
+\newblock 2013.
+
+\bibitem{Han:2006:PGA:1152154.1152189}
+S.-C. Han, F.~Franchetti, and M.~P\"{u}schel.
+\newblock Program generation for the all-pairs shortest path problem.
+\newblock In {\em Proceedings of the 15th International Conference on Parallel
+  Architectures and Compilation Techniques}, PACT '06, pages 222--232, New
+  York, NY, USA, 2006. ACM.
+
+\end{thebibliography}

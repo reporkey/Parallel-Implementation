@@ -71,8 +71,7 @@ int main(int argc, char** argv){
         }
     }
 
-    printf("Diameter = %d\n", diameter);
-	printf("Calculating: \t%f\n", timeCalculate-timeRead);
+	printf("%f\n", timeCalculate-timeRead);
 	
     return 0;
 

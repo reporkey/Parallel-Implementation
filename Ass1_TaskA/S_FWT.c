@@ -2,11 +2,11 @@
 #include <string.h>
 #include <omp.h>
 
-#define MAX 16385 // 2**14
+#define MAX 10512 // 10000+512
 #define NOT_CONNECTED -1
 
-#define L 256
-#define U 128
+#define L 512
+#define U 32
 
 int D[MAX][MAX];
 int nodesCount, nodesCount_real, edgesCount;
@@ -62,7 +62,6 @@ void FWIabc(int Ai, int Aj, int Bi, int Bj, int Ci, int Cj){
 
 void FWT(){
 	int M = nodesCount / L; //tilesCount
-	printf("nodes: %d\t M: %d\t L: %d\t U: %d \n", nodesCount, M, L, U);
 
 	for (int k=0; k<M; k++){
 		// phase 1, itself
@@ -110,7 +109,7 @@ int main(int argc, char** argv){
 	Initialize();
 
 	int a, b, c;
-    if(fscanf(in_file,"%d %d", &nodesCount, &edgesCount) == EOF){
+    if(fscanf(in_file,"%d %d", &nodesCount_real, &edgesCount) == EOF){
 		printf("Error\n");
 		return 1;
 	}
@@ -124,9 +123,9 @@ int main(int argc, char** argv){
 
 	// comtuting begin
 	timeRead = omp_get_wtime();
-	nodesCount =2;
+	nodesCount = 0;
 	while (nodesCount < nodesCount_real){
-		nodesCount *= 2;
+		nodesCount += 512;
 		
 	}
 		
@@ -145,9 +144,7 @@ int main(int argc, char** argv){
     }
 
 
-
-    printf("Diameter = %d\n", diameter);
-	printf("Calculating: \t%f\n", timeCalculate-timeRead);
+	printf("%f\n", timeCalculate-timeRead);
 	
     return 0;
 
