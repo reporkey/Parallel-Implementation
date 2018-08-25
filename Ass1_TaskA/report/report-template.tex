@@ -41,7 +41,13 @@ Sung-Chul had introduced an optimized FW algorithm in 2006\cite{Han:2006:PGA:115
 
 \section{Result}
 
+\begin{figure}
+\includegraphics[width=3.05in]{plot}
+	\caption{Fime vs problem size.\cite{Han:2006:PGA:1152154.1152189}}
+    \label{fig:plot}
+\end{figure}
 
+Figure \ref{fig:plot} clearly shows that the tiled Floyd-Warshall spend less time, plus the OpenMP optimization. It proformace better than the standard algorithm. But there is a interesting point that in -O3 the paralled standard FW is even worth than sequential standard FW. The reason is not clear for us, but we condistered is the the limite of bandwidth of the memory.
 
 
 \begin{table}[h]
