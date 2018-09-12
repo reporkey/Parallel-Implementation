@@ -9,7 +9,7 @@
 #define U 32
 
 int D[MAX][MAX];
-int nodesCount, nodesCount_real, edgesCount;
+int nodesCount, nodesCount_real;
 
 void Initialize(){
 	#pragma omp parallel for
@@ -110,7 +110,7 @@ int main(int argc, char** argv){
 	Initialize();
 
 	int a, b, c;
-    if(fscanf(in_file,"%d %d", &nodesCount_real, &edgesCount) == EOF){
+    if(fscanf(in_file,"%d", &nodesCount_real) == EOF){
 		printf("Error\n");
 		return 1;
 	}
@@ -145,6 +145,7 @@ int main(int argc, char** argv){
         }
     }
 
+	printf("%d\n", diameter);	
 	printf("%f\n", timeCalculate-timeRead);
 	
     return 0;
