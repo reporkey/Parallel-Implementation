@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <math.h>
-#include <omp.h>
+#include <mpi.h>
 
 // Cardioid / bulb checking
 bool cardioidCheck(double real, double img){
@@ -28,29 +28,6 @@ int inset(double real, double img, int maxiter){
 	return 1;
 }
 
-// count the number of points in the set, within the region
-int mandelbrotSetCount(double real_lower, double real_upper, double img_lower, double img_upper, int num, int maxiter){
-	int count=0;
-	double real_step = (real_upper-real_lower)/num;
-	double img_step = (img_upper-img_lower)/num;
-	
-	double img_lower_bound = (abs(img_lower) < abs(img_upper)) ? abs(img_lower) : abs(img_upper);
-
-	#pragma omp parallel for collapse(2)
-	for(int real=0; real<num; real++){
-		for(int img=0; img<num; img++){
-			if (img > 0 && img < img_lower_bound) {
-				#pragma omp atomic
-				count+=2*inset(real_lower+real*real_step,img_lower+img*img_step,maxiter);
-			}
-			if (img > -img_lower_bound && img < 0) continue;
-			#pragma omp atomic
-			count+=inset(real_lower+real*real_step,img_lower+img*img_step,maxiter);
-		}
-	}
-	return count;
-}
-
 // main
 int main(int argc, char *argv[]){
 	double real_lower;
@@ -60,6 +37,15 @@ int main(int argc, char *argv[]){
 	int num;
 	int maxiter;
 	int num_regions = (argc-1)/6;
+
+	// MPI init
+	int provided;
+	int problem_size = num*num;
+	int rank = 0, comm_sz = 0;
+	MPI_Init(&argc, &argv);
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
+
 	for(int region=0;region<num_regions;region++){
 		// scan the arguments
 		sscanf(argv[region*6+1],"%lf",&real_lower);
@@ -68,7 +54,36 @@ int main(int argc, char *argv[]){
 		sscanf(argv[region*6+4],"%lf",&img_upper);
 		sscanf(argv[region*6+5],"%i",&num);
 		sscanf(argv[region*6+6],"%i",&maxiter);		
-		printf("%d\n",mandelbrotSetCount(real_lower,real_upper,img_lower,img_upper,num,maxiter));
+
+		// count the number of points in the set, within the region
+		int count=0;
+		int real =0, img = 0;
+		double real_step = (real_upper-real_lower)/num;
+		double img_step = (img_upper-img_lower)/num;
+		double img_lower_bound = (abs(img_lower) < abs(img_upper)) ? abs(img_lower) : abs(img_upper);
+
+		int local_count = 0;
+		double local_real = real_lower + rank*real_step;
+		double local_img = img_lower + rank*img_step;
+
+		#pragma omp parallel for collapse(2)
+		for(int real=num/comm_sz*rank; real<num/comm_sz*(rank+1); real++){
+			for(int img=0; img<num; img++){
+				if (img > 0 && img < img_lower_bound) {
+					#pragma omp atomic
+					local_count+=2*inset(real_lower+real*real_step,img_lower+img*img_step,maxiter);
+				}
+				if (img > -img_lower_bound && img < 0) continue;
+				#pragma omp atomic
+				local_count+=inset(real_lower+real*real_step,img_lower+img*img_step,maxiter);
+			}
+		}
+		MPI_Reduce(&local_count, &count, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+		if (rank == 0){
+			printf("%d\n", count);
+		}
 	}
+	
+	MPI_Finalize();
 	return EXIT_SUCCESS;
 }
