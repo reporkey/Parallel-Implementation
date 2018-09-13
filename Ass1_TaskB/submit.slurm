@@ -46,7 +46,7 @@ echo ""
 echo ""
 echo ""/
 
-for p in mandelbrot_opti+mpi_p2p mandelbrot_opti+mpi_reduction mandelbrot_opti+mpi_reduction+multithread
+for p in mandelbrot_opti+mpi_reduction mandelbrot_opti+mpi_reduction+multithread
 do
 	echo ""
 	echo "$p"
