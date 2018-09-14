@@ -39,7 +39,6 @@ int main(int argc, char *argv[]){
 	int num_regions = (argc-1)/6;
 
 	// MPI init
-	int problem_size = num*num;
 	int rank = 0, comm_sz = 0;
 	MPI_Init(&argc, &argv);
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -56,14 +55,11 @@ int main(int argc, char *argv[]){
 
 		// count the number of points in the set, within the region
 		int count=0;
-		int real =0, img = 0;
 		double real_step = (real_upper-real_lower)/num;
 		double img_step = (img_upper-img_lower)/num;
 		double img_lower_bound = (abs(img_lower) < abs(img_upper)) ? abs(img_lower) : abs(img_upper);
 
 		int local_count = 0;
-		double local_real = real_lower + rank*real_step;
-		double local_img = img_lower + rank*img_step;
 
 		for(int real=num/comm_sz*rank; real<num/comm_sz*(rank+1); real++){
 			for(int img=0; img<num; img++){

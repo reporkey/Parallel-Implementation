@@ -6,6 +6,7 @@
 #SBATCH --output=output.txt				
 
 module load OpenMPI/3.0.0-GCC-6.2.0
+make
 
 set1='-2 1 -1 1 100 10000 -1 1 0 1 100 10000'
 
@@ -31,32 +32,24 @@ for p in mandelbrot mandelbrot_opti mandelbrot_opti+openmp
 do
 	echo ""
 	echo "$p"
-	for n in 5 10 20 50 100 500
+	for set in set1 set2 set3 set4 set5 set6 set7 set8 set9 set10 set11 set12 set13 set14 set15
 	do
-		echo "n = $n"
-		for set in set1 set2 set3 set4 set5 set6 set7 set8 set9 set10 set11 set12 set13 set14 set15
-		do
-			echo "set = $set"
-			time for i in {1..5}; do ./$p $set; done;
-		done
+		echo "set = $set"
+		time for i in {1..5}; do ./$p $set; done;
 	done
 done
 
 echo ""
 echo ""
-echo ""/
+echo ""
 
 for p in mandelbrot_opti+mpi_reduction mandelbrot_opti+mpi_reduction+multithread
 do
 	echo ""
 	echo "$p"
-	for n in 5 10 20 50 100 500
+	for set in set1 set2 set3 set4 set5 set6 set7 set8 set9 set10 set11 set12 set13 set14 set15
 	do
-		echo "n = $n"
-		for set in set1 set2 set3 set4 set5 set6 set7 set8 set9 set10 set11 set12 set13 set14 set15
-		do
-			echo "set = $set"
-			time for i in {1..5}; do mpiexec -n $n $p $set; done;
-		done
+		echo "set = $set"
+		time for i in {1..5}; do mpiexec $p $set; done;
 	done
 done
