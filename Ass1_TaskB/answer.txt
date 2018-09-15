@@ -1,0 +1,198 @@
+
+mandelbrot
+set = set1
+81
+set = set2
+81
+set = set3
+81
+set = set4
+81
+set = set5
+81
+set = set6
+81
+set = set7
+81
+set = set8
+81
+set = set9
+81
+set = set10
+81
+set = set11
+81
+set = set12
+81
+set = set13
+81
+set = set14
+81
+set = set15
+81
+
+mandelbrot_opti
+set = set1
+81
+set = set2
+81
+set = set3
+81
+set = set4
+81
+set = set5
+81
+set = set6
+81
+set = set7
+81
+set = set8
+81
+set = set9
+81
+set = set10
+81
+set = set11
+81
+set = set12
+81
+set = set13
+81
+set = set14
+81
+set = set15
+81
+
+mandelbrot_opti+openmp
+set = set1
+81
+set = set2
+81
+set = set3
+81
+set = set4
+81
+set = set5
+81
+set = set6
+81
+set = set7
+81
+set = set8
+81
+set = set9
+81
+set = set10
+81
+set = set11
+81
+set = set12
+81
+set = set13
+81
+set = set14
+81
+set = set15
+81
+
+mandelbrot_opti+mpi
+set = set1
+
+mandelbrot
+set = set1
+81
+set = set2
+81
+set = set3
+81
+set = set4
+81
+set = set5
+81
+set = set6
+81
+set = set7
+81
+set = set8
+81
+set = set9
+81
+set = set10
+81
+set = set11
+81
+set = set12
+81
+set = set13
+81
+set = set14
+81
+set = set15
+81
+
+mandelbrot_opti
+set = set1
+81
+set = set2
+81
+set = set3
+81
+set = set4
+81
+set = set5
+81
+set = set6
+81
+set = set7
+81
+set = set8
+81
+set = set9
+81
+set = set10
+81
+set = set11
+81
+set = set12
+81
+set = set13
+81
+set = set14
+81
+set = set15
+81
+
+mandelbrot_opti+openmp
+set = set1
+81
+set = set2
+81
+set = set3
+81
+set = set4
+81
+set = set5
+81
+set = set6
+81
+set = set7
+81
+set = set8
+81
+set = set9
+81
+set = set10
+81
+set = set11
+81
+set = set12
+81
+set = set13
+81
+set = set14
+81
+set = set15
+81
+
+mandelbrot_opti+mpi
+set = set1
