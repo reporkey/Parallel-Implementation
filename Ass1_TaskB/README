@@ -1,0 +1,2 @@
+mpic++ -Wall -fopenmp mandelbrot_opti+mpi+multithread.cpp -o mandelbrot_opti+mpi+multithread -O3 -lm -std=c++11
+mpiexec -n 12 mandelbrot_opti+mpi+multithread -2 1 -1 1 100 10000 -1 1 0 1 100 10000

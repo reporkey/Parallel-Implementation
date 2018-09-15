@@ -1,0 +1,140 @@
+gcc -Wall -fopenmp mandelbrot.cpp -o mandelbrot -lm -std=c++11
+gcc -Wall -fopenmp mandelbrot_opti.cpp -o mandelbrot_opti -lm -std=c++11
+gcc -Wall -fopenmp mandelbrot_opti+openmp.cpp -o mandelbrot_opti+openmp -lm -std=c++11
+mpic++ -Wall -fopenmp mandelbrot_opti+mpi.cpp -o mandelbrot_opti+mpi -lm -std=c++11
+mpic++ -Wall -fopenmp mandelbrot_opti+mpi+multithread.cpp -o mandelbrot_opti+mpi+multithread -lm -std=c++11
+
+mandelbrot_opti+mpi
+set = set8
+
+real	0m3.797s
+user	0m14.143s
+sys	0m0.632s
+set = set9
+
+real	0m4.989s
+user	0m18.904s
+sys	0m0.702s
+set = set10
+
+real	0m6.368s
+user	0m24.544s
+sys	0m0.789s
+set = set11
+
+real	0m7.959s
+user	0m30.897s
+sys	0m0.893s
+set = set12
+
+real	0m9.661s
+user	0m37.977s
+sys	0m0.935s
+
+mandelbrot_opti+mpi+multithread
+set = set8
+
+real	0m1.608s
+user	0m13.433s
+sys	0m0.559s
+set = set9
+
+real	0m1.821s
+user	0m16.458s
+sys	0m0.516s
+set = set10
+
+real	0m2.168s
+user	0m20.469s
+sys	0m0.548s
+set = set11
+
+real	0m2.613s
+user	0m25.440s
+sys	0m0.622s
+set = set12
+
+real	0m2.943s
+user	0m29.573s
+sys	0m0.619s
+
+mandelbrot
+set = set8
+
+real	1m15.889s
+user	1m15.881s
+sys	0m0.003s
+set = set9
+
+real	1m43.276s
+user	1m43.265s
+sys	0m0.003s
+set = set10
+
+real	2m14.870s
+user	2m14.856s
+sys	0m0.004s
+set = set11
+
+real	2m50.862s
+user	2m50.693s
+sys	0m0.145s
+set = set12
+
+real	3m30.820s
+user	3m30.660s
+sys	0m0.137s
+
+mandelbrot_opti
+set = set8
+
+real	0m7.605s
+user	0m7.595s
+sys	0m0.005s
+set = set9
+
+real	0m10.271s
+user	0m10.263s
+sys	0m0.004s
+set = set10
+
+real	0m13.443s
+user	0m13.434s
+sys	0m0.006s
+set = set11
+
+real	0m16.972s
+user	0m16.964s
+sys	0m0.004s
+set = set12
+
+real	0m20.949s
+user	0m20.937s
+sys	0m0.007s
+
+mandelbrot_opti+openmp
+set = set8
+
+real	0m7.624s
+user	0m7.608s
+sys	0m0.008s
+set = set9
+
+real	0m10.288s
+user	0m10.278s
+sys	0m0.007s
+set = set10
+
+real	0m13.465s
+user	0m13.458s
+sys	0m0.003s
+set = set11
+
+real	0m17.006s
+user	0m16.997s
+sys	0m0.006s
+set = set12
+
+real	0m20.986s
+user	0m20.979s
+sys	0m0.003s

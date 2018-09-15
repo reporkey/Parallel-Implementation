@@ -61,7 +61,7 @@ int main(int argc, char *argv[]){
 
 		int local_count = 0;
 
-		#pragma omp parallel for collapse(2)
+		#pragma omp parallel for collapse(2) schedule(dynamic)
 		for(int real=num/comm_sz*rank; real<num/comm_sz*(rank+1); real++){
 			for(int img=0; img<num; img++){
 				if (img > 0 && img < img_lower_bound) {
