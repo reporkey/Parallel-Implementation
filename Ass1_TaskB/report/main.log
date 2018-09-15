@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.14)  15 SEP 2018 20:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.14)  15 SEP 2018 23:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -375,58 +375,70 @@ LaTeX Info: Redefining \nameref on input line 20.
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-<sr_setup.pdf, id=27, 1114.1625pt x 584.1825pt>
-File: sr_setup.pdf Graphic file (type pdf)
-<use sr_setup.pdf>
-Package pdftex.def Info: sr_setup.pdf  used on input line 55.
-(pdftex.def)             Requested size: 375.80544pt x 197.04166pt.
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ˜ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ˜ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ˜ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./sr_setup.pdf>]
-<sr_squeezing_vs_detuning.pdf, id=54, 361.35pt x 271.0125pt>
-File: sr_squeezing_vs_detuning.pdf Graphic file (type pdf)
-<use sr_squeezing_vs_detuning.pdf>
-Package pdftex.def Info: sr_squeezing_vs_detuning.pdf  used on input line 131.
-(pdftex.def)             Requested size: 234.8775pt x 176.16016pt.
- [2 <./sr_squeezing_vs_detuning.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 169.
- [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 169.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<untitled.jpg, id=58, 562.1pt x 421.575pt>
+File: untitled.jpg Graphic file (type jpg)
+<use untitled.jpg>
+Package pdftex.def Info: untitled.jpg  used on input line 55.
+(pdftex.def)             Requested size: 449.68062pt x 337.26045pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 60.
+ [2 <./untitled.jpg>] [3]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 60.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 169.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 169.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 60.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 60.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8DF502F8D096E4087BEBD98E87CCC6C5;222.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 169.
+(rerunfilecheck)             Checksum: A7CF31C14EF185A948A47C909AB875A8;659.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 60.
  ) 
 Here is how much of TeX's memory you used:
- 6310 strings out of 492982
- 91345 string characters out of 6134896
- 185980 words of memory out of 5000000
- 9806 multiletter control sequences out of 15000+600000
- 9230 words of font info for 34 fonts, out of 8000000 for 9000
+ 6297 strings out of 492982
+ 91146 string characters out of 6134896
+ 186708 words of memory out of 5000000
+ 9796 multiletter control sequences out of 15000+600000
+ 9023 words of font info for 33 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,9n,32p,265b,335s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,8n,32p,812b,329s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
-i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
-b>
-Output written on main.pdf (3 pages, 229447 bytes).
+type1/public/amsfonts/cm/cmr17.pfb>
+Output written on main.pdf (3 pages, 113766 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 98 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
+ 15 named destinations out of 1000 (max. 500000)
+ 94 words of extra memory for PDF output out of 10000 (max. 10000000)
 
