@@ -4,8 +4,8 @@
 
 int main (int argc, char *argv[]) {
 
-	if(argc!=5){
-        printf("Enter \n num of items \n max value of item \n max weight of item \n max total weight.\n");
+	if(argc!=6){
+        printf("Enter \n num of items \n max value of item \n max weight of item \n max total weight \n output file\n");
         return -1;
     }
 	
@@ -13,12 +13,13 @@ int main (int argc, char *argv[]) {
 	int maxV = atoi(argv[2]);
 	int maxW = atoi(argv[3]);
 	int W = atoi(argv[4]);
+	char* path = argv[5];
 
 //	time_t t;
 //	/* Intializes random number generator */
 //	srand((unsigned) time(&t));
-
-	FILE *f = fopen("input.txt", "w");
+	
+	FILE *f = fopen(path, "w");
 	if (f == NULL) { 
         fprintf(stderr, "\nError opend file\n"); 
         exit (1); 
