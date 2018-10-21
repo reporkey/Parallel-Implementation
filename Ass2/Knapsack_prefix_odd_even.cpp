@@ -6,9 +6,15 @@
 // NOTE: The array "v" and array "w" are assumed to store all relevant values starting at index 1.
 
 // assume that problem size is power of 2.
-
 // bottom/up parallel prefix sum
 
+/*
+
+
+This algorithm is not correct.
+Prefix sum cannot be used on Knapsack 's dynamic program.
+
+*/
 
 #include <cstdio>
 #include <cstdlib>
