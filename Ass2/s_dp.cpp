@@ -9,13 +9,13 @@
 #include <cstdio>
 #include <cstdlib>
 
-int n = 4;
+int n = 4+1;
 int W = 10;
 
 int main (int argc, char *argv[]) {
 
-	int v[] = {0, 2, 1, 5};
-	int w[] = {0, 3, 2, 5};
+	int v[] = {0, 2, 1, 5, 3};
+	int w[] = {0, 3, 2, 5, 2};
 	int m[n][W];
 
 	// the first row is 0, since index is started from 1.
