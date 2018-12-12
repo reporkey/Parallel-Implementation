@@ -2,6 +2,7 @@
 #### Aim to implement a parallel implmentation from a sequential algorithm (as fast as possible).
 ````
 
-* Ass1 A: Floyd-Warshall algorithm.
-* Ass1 B: Mandelbrot set.
-* Ass2: Knapsack problem.
+ Ass1 A: Floyd-Warshall algorithm.
+ Ass1 B: Mandelbrot set.
+ Ass2: Knapsack problem.
+````
